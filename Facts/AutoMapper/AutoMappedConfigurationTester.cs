@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Facts.AutoMapper
 {
-    class AutoMappedConfigurationTester
+    public class AutoMappedConfigurationTester
     {
         [Fact]
         public void AssertConfigurationIsValid()
