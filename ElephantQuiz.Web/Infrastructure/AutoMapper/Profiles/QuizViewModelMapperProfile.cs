@@ -15,6 +15,7 @@ namespace ElephantQuiz.Web.Infrastructure.AutoMapper.Profiles
             Mapper.CreateMap<EditQuizViewModel, Quiz>()
                 .ForMember(x => x.Id, o => o.Ignore())
                 .ForMember(x => x.Title, o => o.MapFrom(m => m.Title))
+                .ForMember(x => x.Questions, o => o.Ignore())
                 ;
         }
     }
