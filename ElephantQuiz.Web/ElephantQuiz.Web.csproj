@@ -96,6 +96,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\Container.cs" />
+    <Compile Include="App_Start\ContainerBindings.cs" />
+    <Compile Include="App_Start\DocumentStoreContainer.cs" />
     <Compile Include="App_Start\NinjectMVC3.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

@@ -36,17 +36,7 @@ namespace ElephantQuiz.Web.App_Start
         /// <returns>The created kernel.</returns>
         private static IKernel CreateKernel()
         {
-            var kernel = new StandardKernel();
-            RegisterServices(kernel);
-            return kernel;
+            return Container.Kernel;
         }
-
-        /// <summary>
-        /// Load your modules or register your services here!
-        /// </summary>
-        /// <param name="kernel">The kernel.</param>
-        private static void RegisterServices(IKernel kernel)
-        {
-        }        
     }
 }
