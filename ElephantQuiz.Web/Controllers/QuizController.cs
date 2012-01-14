@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ElephantQuiz.Web.Extensions;
+using ElephantQuiz.Web.Infrastructure.AutoMapper;
 using ElephantQuiz.Web.Models;
 using ElephantQuiz.Web.ViewModels;
 using Ninject;
@@ -57,10 +58,8 @@ namespace ElephantQuiz.Web.Controllers
             if (!ModelState.IsValid)
                 return View("Edit", input);
 
-            var quiz = new Quiz
-                           {
-                               Title = input.Title
-                           };
+            var quiz = input.MapTo<Quiz>();
+
             RavenSession.Store(quiz);
 
             return RedirectToAction("Details", new { id = quiz.Id.ToIntId()});

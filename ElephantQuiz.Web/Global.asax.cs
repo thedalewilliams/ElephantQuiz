@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using ElephantQuiz.Web.Infrastructure.AutoMapper;
 
 namespace ElephantQuiz.Web
 {
@@ -35,6 +36,8 @@ namespace ElephantQuiz.Web
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            AutoMapperConfiguration.Configure();
         }
     }
 }

@@ -39,6 +39,9 @@
     <Reference Include="AsyncCtpLibrary">
       <HintPath>..\packages\RavenDB.1.0.573\lib\net40\AsyncCtpLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.0.0\lib\net40-client\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -103,6 +106,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\QuizController.cs" />
+    <Compile Include="Infrastructure\AutoMapper\AutoMapperConfiguration.cs" />
+    <Compile Include="Infrastructure\AutoMapper\AutoMapperExtensions.cs" />
+    <Compile Include="Infrastructure\AutoMapper\Profiles\QuizViewModelMapperProfile.cs" />
     <Compile Include="ViewModels\DisplayQuizViewModel.cs" />
     <Compile Include="ViewModels\QuizListViewModel.cs" />
     <Compile Include="Extensions\RavenHelpers.cs" />
