@@ -21,7 +21,7 @@ namespace ElephantQuiz.Web.Controllers
 
         public ActionResult Index()
         {
-            return View(new QuizListViewModel());
+            return View("Index", new QuizListViewModel());
         }
 
         //
@@ -35,10 +35,7 @@ namespace ElephantQuiz.Web.Controllers
             if (quiz == null)
                 return HttpNotFound();
 
-            return View("Details", new DisplayQuizViewModel
-                                       {
-                                           Title = quiz.Title,
-                                       } );
+            return View("Details", quiz.MapTo<DisplayQuizViewModel>());
         }
 
         //
@@ -70,7 +67,11 @@ namespace ElephantQuiz.Web.Controllers
  
         public ActionResult Edit(int id)
         {
-            return View(new EditQuizViewModel());
+            var quiz = RavenSession.Load<Quiz>(id);
+            if (quiz == null)
+                return HttpNotFound();
+
+            return View("Edit", quiz.MapTo<EditQuizViewModel>());
         }
 
         //
@@ -82,7 +83,15 @@ namespace ElephantQuiz.Web.Controllers
             if (!ModelState.IsValid)
                 return View("Edit", input);
 
-            return RedirectToAction("Details", new { id = input.Id });
+            var quiz = RavenSession.Load<Quiz>(id);
+            if (quiz == null)
+                return HttpNotFound();
+
+            input.MapPropertiesToInstance(quiz);
+
+            RavenSession.Store(quiz);
+
+            return RedirectToAction("Details", new { id = quiz.Id.ToIntId() });
         }
     }
 }
